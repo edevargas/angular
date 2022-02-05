@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { throwIfEmpty } from 'rxjs';
+import { LessonsControllerService } from 'src/app/Domain/controllers/lessons/lessons-controller.service';
+import { Lesson } from 'src/app/Domain/models/lesson';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +10,13 @@ import { throwIfEmpty } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   selectedLesson: any;
-  courseLessons = [
-    { title: 'Hello Angular' },
-    { title: 'Component Fundamentals' },
-    { title: 'Template Driven Forms' },
-    { title: 'Angular Services' },
-    { title: 'Server Communication' },
-    { title: 'Component Driven Architecture' },
-    { title: 'Angular Routing' },
-    { title: 'Unit Testing Fundamentals' },
-  ];
+  courseLessons: Lesson[] = []
 
-  constructor() {}
+  constructor(private lessonsController: LessonsControllerService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.courseLessons = this.lessonsController.getAll()
+  }
 
   selectLesson(lesson: any) {
     this.selectedLesson = lesson;
