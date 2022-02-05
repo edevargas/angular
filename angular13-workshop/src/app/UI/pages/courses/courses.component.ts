@@ -1,4 +1,6 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
 import { CoursesControllerService } from 'src/app/Domain/controllers/courses/courses-controller.service';
 import { Course } from 'src/app/Domain/models/course';
 
@@ -19,10 +21,14 @@ export class CoursesComponent implements OnInit {
   originalTitle = ""
   courses: Course[] = []
 
-  constructor(private coursesController: CoursesControllerService) { }
+  constructor(public coursesController: CoursesControllerService) { }
 
   ngOnInit(): void {
-    this.courses = this.coursesController.getAll()
+    this.fetchCourses();
+  }
+
+  fetchCourses(): void {
+    this.coursesController.getAll()
   }
 
   selectCourse(course: Course) {
@@ -31,7 +37,6 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(id: string) {
-
   }
 
   reset() {
@@ -39,7 +44,7 @@ export class CoursesComponent implements OnInit {
   }
 
   saveCourse(course: Course) {
-    this.courses.push(course)
+    this.coursesController.save(course)
   }
 
 }

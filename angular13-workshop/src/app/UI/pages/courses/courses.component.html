@@ -11,7 +11,7 @@
             <!-- COURSES LIST -->
             <mat-list>
               <mat-list-item
-                *ngFor="let course of courses"
+                *ngFor="let course of coursesController.courses"
                 (click)="selectCourse(course)"
               >
                 <h3 matLine>{{ course.title | titlecase }}</h3>

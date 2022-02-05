@@ -6,6 +6,48 @@
       "description": "Learn the fundamentals of Angular 13",
       "percentComplete": 26,
       "favorite": true
+    },
+    {
+      "id": 2,
+      "title": "Hello Im new",
+      "percentComplete": 22,
+      "favorite": false
+    },
+    {
+      "id": 3,
+      "title": "Hello Im new",
+      "percentComplete": 22,
+      "favorite": false
+    },
+    {
+      "id": 4,
+      "title": "asdsdasd",
+      "percentComplete": 0,
+      "favorite": false
+    },
+    {
+      "id": 5,
+      "title": "nuevo",
+      "percentComplete": 0,
+      "favorite": false
+    },
+    {
+      "id": 6,
+      "title": "aaaaas",
+      "percentComplete": 5,
+      "favorite": false
+    },
+    {
+      "id": 7,
+      "title": "asdasd",
+      "percentComplete": 0,
+      "favorite": false
+    }
+  ],
+  "lessons": [
+    {
+      "id": "1",
+      "title": "Component Driven Architecture"
     }
   ]
 }
