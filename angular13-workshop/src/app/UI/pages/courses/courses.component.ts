@@ -15,19 +15,20 @@ const emptyCourse: Course = {
 })
 export class CoursesComponent implements OnInit {
   selectedCourse = emptyCourse;
+  originalTitle = ""
   courses = [
     {
       id: 1,
       title: 'Angular 13 Fundamentals',
       description: 'Learn the fundamentals of Angular 13',
-      percentComplete: 26,
+      percentComplete: 12,
       favorite: true
     },
     {
       id: 2,
       title: 'Oter course',
       description: 'Learn the fundamentals of Angular 13',
-      percentComplete: 50,
+      percentComplete: 98,
       favorite: true
     }
   ];
@@ -35,10 +36,12 @@ export class CoursesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
-  selectCourse(course: any) {
-    this.selectedCourse = course
+  selectCourse(course: Course) {
+    this.selectedCourse = {...course}
+    this.originalTitle = course.title
   }
 
   deleteCourse(id: number) {
@@ -47,6 +50,10 @@ export class CoursesComponent implements OnInit {
 
   reset() {
     this.selectCourse({...emptyCourse})
+  }
+
+  saveCourse(course: Course) {
+    this.courses.push(course)
   }
 
 }

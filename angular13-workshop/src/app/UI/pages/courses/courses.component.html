@@ -37,14 +37,14 @@
             <mat-card-header>
                 <mat-card-title>
                   <span *ngIf="selectedCourse?.id; else elseBlock">
-                    {{selectedCourse.title | titlecase}}
+                    {{originalTitle | titlecase}}
                   </span>
                   <ng-template #elseBlock>Select course</ng-template>
                 </mat-card-title>
             </mat-card-header>
 
             <!-- COURSE FORM -->
-            <form  #form="ngForm">
+            <form  #form="ngForm" (submit)="saveCourse(selectedCourse)">
               <mat-card-content>
                 <mat-form-field class="full-width">
                   <input
@@ -58,17 +58,32 @@
                 </mat-form-field>
 
                 <mat-form-field class="full-width">
-                  <input
+                  <textarea
                     matInput
                     type="text"
                     placeholder="Description"
                     name="description"
                     [(ngModel)]="selectedCourse.description"
-                  >
+                  ></textarea>
                 </mat-form-field>
+                <section class="full-width">
+                  <h4>{{selectedCourse.percentComplete}}% complete</h4>
+                  <mat-slider
+                  class="full-width"
+                  min="0"
+                  max="100"
+                  thumbLabel
+                  [(ngModel)]="selectedCourse.percentComplete"
+                  name="percentComplete"
+                  ></mat-slider>
+                </section>
+                <section>
+                  <mat-checkbox [(ngModel)]="selectedCourse.favorite" name="favorite">Is favorite</mat-checkbox>
+                </section>
 
               </mat-card-content>
               <mat-card-actions>
+                <button type="submit" mat-button color="primary" [disabled]="form.invalid">Save</button>
                 <button mat-button type="button" (click)="reset()">Cancel</button>
               </mat-card-actions>
             </form>
