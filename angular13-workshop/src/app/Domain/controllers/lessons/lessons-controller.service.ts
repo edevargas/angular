@@ -8,9 +8,11 @@ import { Lesson } from '../../models/lesson';
 export class LessonsControllerService {
 
   constructor(private lessonService: LessonsService) { }
+  lessons$;
 
   getAll(): Lesson[] {
-    return this.lessonService.courseLessons
+    this.lessons$ = this.lessonService.lessons$
+    return this.lessonService.lessons
   }
 
 }
