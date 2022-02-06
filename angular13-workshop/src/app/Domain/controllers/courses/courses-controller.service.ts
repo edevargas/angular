@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CoursesService } from 'src/app/Infraestructure/services/courses/courses.service';
 import { Course } from '../../models/course';
 import { courseMapper } from '../../mappers/CourseMapper';
