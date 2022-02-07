@@ -7,8 +7,13 @@ import { Course } from 'src/app/Infraestructure/models/course';
     styleUrls: ['./course-detail.component.scss'],
 })
 export class CourseDetailComponent {
-    @Input() course: Course;
     @Output() saved = new EventEmitter();
     @Output() cancelled = new EventEmitter();
+    @Input() set course(value) {
+        if(!value) return;
+        this.currentCourse = {...value}
+        this.originalTitle = this.currentCourse.title
+    }
+    currentCourse: Course;
     originalTitle = '';
 }

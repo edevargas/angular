@@ -16,7 +16,6 @@ const emptyCourse: Course = {
 })
 export class CoursesComponent implements OnInit {
     selectedCourse = emptyCourse;
-    courses: Course[] = [];
 
     constructor(public coursesController: CoursesControllerService) {}
 

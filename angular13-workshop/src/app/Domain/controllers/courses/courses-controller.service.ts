@@ -4,33 +4,42 @@ import { Course } from '../../models/course';
 import { courseMapper } from '../../mappers/CourseMapper';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class CoursesControllerService {
-  courses: Course[] = [];
+    courses: Course[] = [];
 
-  constructor(private coursesService: CoursesService) { }
+    constructor(private coursesService: CoursesService) {}
 
-  getAll(): void {
-    this.coursesService.all().subscribe( (result: Course[] ) => this.courses = result )
-  }
-
-  save(course: Course) {
-    if(course.id){
-      this.update(course)
-    }else {
-      this.create(course)
+    getAll(): void {
+        this.coursesService
+            .all()
+            .subscribe((result: Course[]) => {
+                console.log(result)
+                this.courses = result
+            });
     }
-  }
 
-  create(course: Course) {
-    const courseIf = courseMapper.mapDomainCourseToIFCourse(course)
-    this.coursesService.create(courseIf).subscribe(result => this.getAll())
-  }
+    save(course: Course) {
+        console.log({id:course.id})
+        if (course.id) {
+            this.update(course);
+        } else {
+            this.create(course);
+        }
+    }
 
-  update(course: Course) {
-    const courseIf = courseMapper.mapDomainCourseToIFCourse(course)
-    this.coursesService.update(courseIf).subscribe(result => this.getAll())
-  }
+    create(course: Course) {
+        const courseIf = courseMapper.mapDomainCourseToIFCourse(course);
+        this.coursesService
+            .create(courseIf)
+            .subscribe((result) => this.getAll());
+    }
 
+    update(course: Course) {
+        const courseIf = courseMapper.mapDomainCourseToIFCourse(course);
+        this.coursesService
+            .update(courseIf)
+            .subscribe((result) => this.getAll());
+    }
 }

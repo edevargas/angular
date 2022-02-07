@@ -4,40 +4,38 @@ import { API } from '../../constants/api';
 import { Course } from '../../models/course';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class CoursesService {
-  model = "courses"
+    model = 'courses';
 
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+    private getUrl(): string {
+        return `${API.local}/${this.model}`;
+    }
 
-  private getUrl() {
-    return `${API.local}/${this.model}`
-  }
+    private getUrlWithId(id: string): string {
+        return `${this.getUrl()}/${id}`;
+    }
 
-  private getUrlWithId(id: string) {
-    return `${this.getUrl}/${id}`
-  }
+    all() {
+        return this.http.get(this.getUrl());
+    }
 
-  all() {
-    return this.http.get(this.getUrl())
-  }
+    find(id: string) {
+        return this.http.get(this.getUrlWithId(id));
+    }
 
-  find(id: string) {
-    return this.http.get(this.getUrlWithId(id))
-  }
+    create(course: Course) {
+        return this.http.post(this.getUrl(), course);
+    }
 
-  create(course: Course) {
-    return this.http.post(this.getUrl(), course)
-  }
+    update(course: Course) {
+        return this.http.put(this.getUrlWithId(course.id), course);
+    }
 
-  update(course: Course) {
-    return this.http.put(this.getUrlWithId(course.id), course)
-  }
-
-  delete(id: string) {
-    return this.http.delete(this.getUrlWithId(id))
-  }
-
+    delete(id: string) {
+        return this.http.delete(this.getUrlWithId(id));
+    }
 }
