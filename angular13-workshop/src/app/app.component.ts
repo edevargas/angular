@@ -20,6 +20,7 @@ export class AppComponent {
         { path: '/examples/protected', icon: 'vpn_key', title: 'Protected Routes' },
         { path: '/examples/lazy', icon: 'swap_vertical_circle', title: 'Lazy Module' },
         { path: '/examples/create', icon: 'add_box', title: 'Dynamic Components' },
+        { path: '/examples/input', icon: 'dashboard_customize', title: 'Custom Input' }
     ];
 
     isAuthenticated$ = this.authService.isAuthenticated$.pipe(shareReplay(1));

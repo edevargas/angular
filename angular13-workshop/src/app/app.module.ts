@@ -24,6 +24,8 @@ import { DynamicComponent } from './UI/pages/examples/dynamic-component/dynamic-
 import { SquareComponent } from './UI/pages/examples/dynamic-component/square/square.component';
 import { CircleComponent } from './UI/pages/examples/dynamic-component/circle/circle.component';
 import { TriangleComponent } from './UI/pages/examples/dynamic-component/triangle/triangle.component';
+import { CustomInputComponent } from './UI/pages/examples/custom-input/custom-input.component';
+import { CustomControlComponent } from './UI/pages/examples/custom-input/custom-control/custom-control.component';
 
 @NgModule({
     imports: [
@@ -50,7 +52,9 @@ import { TriangleComponent } from './UI/pages/examples/dynamic-component/triangl
         DynamicComponent,
         CircleComponent,
         SquareComponent,
-        TriangleComponent
+        TriangleComponent,
+        CustomInputComponent,
+        CustomControlComponent
     ],
     providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent],
