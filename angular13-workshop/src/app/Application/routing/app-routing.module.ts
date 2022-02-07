@@ -25,19 +25,26 @@ const routes: Routes = [
                 component: AdminComponent,
                 children: [
                     { path: 'payroll', component: AdminPayrollComponent },
-                    { path: 'vacation', component: AdminVacationComponent }
-                ]
+                    { path: 'vacation', component: AdminVacationComponent },
+                ],
             },
-            { path: "params", component: RouteParamsComponent },
-            { path: "params/:id", component: RouteParamsComponent },
+            { path: 'params', component: RouteParamsComponent },
+            { path: 'params/:id', component: RouteParamsComponent },
             {
                 path: 'protected',
                 component: ProtectedComponent,
                 canActivate: [AuthGuard],
             },
-        ]
+            {
+                path: 'lazy',
+                loadChildren: () =>
+                    import('../../UI/pages/examples/lazy-module/lazy-module.module').then(
+                        (m) => m.LazyModule
+                    )
+            },
+        ],
     },
-    { path: '**', redirectTo: '/home' }
+    { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({

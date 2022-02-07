@@ -18,6 +18,7 @@ export class AppComponent {
         { path: '/examples/child', icon: 'face', title: 'Child Routes' },
         { path: '/examples/params', icon: 'system_update_alt', title: 'Route Params' },
         { path: '/examples/protected', icon: 'vpn_key', title: 'Protected Routes' },
+        { path: '/examples/lazy', icon: 'swap_vertical_circle', title: 'Lazy Module' },
     ];
 
     isAuthenticated$ = this.authService.isAuthenticated$.pipe(shareReplay(1));
