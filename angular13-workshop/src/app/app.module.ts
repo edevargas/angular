@@ -17,6 +17,9 @@ import { AdminPayrollComponent } from './UI/pages/examples/child-routes/admin-pa
 import { AdminVacationComponent } from './UI/pages/examples/child-routes/admin-vacation/admin-vacation.component';
 import { AuthService } from './Infraestructure/services/auth/auth.service';
 import { RouteParamsComponent } from './UI/pages/examples/route-params/route-params.component';
+import { ProtectedComponent } from './UI/pages/examples/protected/protected.component';
+import { AuthGuard } from './Application/routing/guards/auth.guard';
+import { LoginComponent } from './UI/pages/login/login.component';
 
 @NgModule({
     imports: [
@@ -37,9 +40,11 @@ import { RouteParamsComponent } from './UI/pages/examples/route-params/route-par
         AdminPayrollComponent,
         AdminVacationComponent,
         ExamplesComponent,
-        RouteParamsComponent
+        RouteParamsComponent,
+        ProtectedComponent,
+        LoginComponent
     ],
-    providers: [AuthService],
+    providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
