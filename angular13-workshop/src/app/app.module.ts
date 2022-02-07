@@ -20,6 +20,10 @@ import { RouteParamsComponent } from './UI/pages/examples/route-params/route-par
 import { ProtectedComponent } from './UI/pages/examples/protected/protected.component';
 import { AuthGuard } from './Application/routing/guards/auth.guard';
 import { LoginComponent } from './UI/pages/login/login.component';
+import { DynamicComponent } from './UI/pages/examples/dynamic-component/dynamic-component.component';
+import { SquareComponent } from './UI/pages/examples/dynamic-component/square/square.component';
+import { CircleComponent } from './UI/pages/examples/dynamic-component/circle/circle.component';
+import { TriangleComponent } from './UI/pages/examples/dynamic-component/triangle/triangle.component';
 
 @NgModule({
     imports: [
@@ -42,7 +46,11 @@ import { LoginComponent } from './UI/pages/login/login.component';
         ExamplesComponent,
         RouteParamsComponent,
         ProtectedComponent,
-        LoginComponent
+        LoginComponent,
+        DynamicComponent,
+        CircleComponent,
+        SquareComponent,
+        TriangleComponent
     ],
     providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent],

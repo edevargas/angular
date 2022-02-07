@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminPayrollComponent } from 'src/app/UI/pages/examples/child-routes/admin-payroll/admin-payroll.component';
 import { AdminVacationComponent } from 'src/app/UI/pages/examples/child-routes/admin-vacation/admin-vacation.component';
 import { AdminComponent } from 'src/app/UI/pages/examples/child-routes/admin.component';
+import { DynamicComponent } from 'src/app/UI/pages/examples/dynamic-component/dynamic-component.component';
 import { ExamplesComponent } from 'src/app/UI/pages/examples/examples.component';
 import { ProtectedComponent } from 'src/app/UI/pages/examples/protected/protected.component';
 import { RouteParamsComponent } from 'src/app/UI/pages/examples/route-params/route-params.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
         path: 'examples',
         component: ExamplesComponent,
         children: [
+            { path: 'create', component: DynamicComponent },
             {
                 path: 'child',
                 component: AdminComponent,
