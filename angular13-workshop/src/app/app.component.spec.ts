@@ -1,33 +1,68 @@
-import { TestBed, async } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { AppComponent } from './app.component';
+import { AuthService } from './Infraestructure/services/auth/auth.service';
+
+const noop = () => {};
+
+const mockAuthService = {
+    isAuthenticated$: of(true),
+    logout: noop,
+};
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
-    }).compileComponents();
-  }));
+    let component: AppComponent;
+    let service: AuthService;
+    let fixture: ComponentFixture<AppComponent>;
+    let de: DebugElement;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [RouterTestingModule],
+            declarations: [AppComponent],
+            providers: [
+                {
+                    provide: AuthService,
+                    useValue: mockAuthService,
+                },
+            ],
+        }).compileComponents();
+    }));
 
-  it(`should have as title 'angular9-fundamentals-workshop'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular9-fundamentals-workshop');
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        service = TestBed.inject(AuthService);
+        de = fixture.debugElement; // save DOM element
+        fixture.detectChanges();
+    });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain(
-      'angular9-fundamentals-workshop app is running!'
-    );
-  });
+    it('should create the app', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it(`should have the correct title'`, () => {
+        const title = 'Angular 13 Fundamentals';
+        expect(component.title).toEqual(title);
+    });
+
+    it(`should render an updated title`, () => {
+        // arrange
+        const newTitle = 'Angular 20 Fundamentals';
+        const titleElement = de.query(By.css('.title'));
+        // act
+        component.title = newTitle;
+        fixture.detectChanges(); // You need to tell the component manually to detect changes
+        // assert
+        expect(titleElement.nativeElement.innerText).toBe(newTitle);
+    });
+
+    it(`should properly delegate logout responsibility`, () => {
+        spyOn(service, 'logout').and.callThrough();
+        component.logout();
+        expect(service.logout).toHaveBeenCalled();
+    });
 });
