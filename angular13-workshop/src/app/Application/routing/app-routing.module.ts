@@ -4,6 +4,7 @@ import { AdminPayrollComponent } from 'src/app/UI/pages/examples/child-routes/ad
 import { AdminVacationComponent } from 'src/app/UI/pages/examples/child-routes/admin-vacation/admin-vacation.component';
 import { AdminComponent } from 'src/app/UI/pages/examples/child-routes/admin.component';
 import { ExamplesComponent } from 'src/app/UI/pages/examples/examples.component';
+import { RouteParamsComponent } from 'src/app/UI/pages/examples/route-params/route-params.component';
 
 import { CoursesComponent } from '../../UI/pages/courses/courses.component';
 import { HomeComponent } from '../../UI/pages/home/home.component';
@@ -22,7 +23,9 @@ const routes: Routes = [
                     { path: 'payroll', component: AdminPayrollComponent },
                     { path: 'vacation', component: AdminVacationComponent }
                 ]
-            }
+            },
+            { path: "params", component: RouteParamsComponent },
+            { path: "params/:id", component: RouteParamsComponent }
         ]
     },
     { path: '**', redirectTo: '/home' }

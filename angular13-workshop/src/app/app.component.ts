@@ -15,7 +15,8 @@ export class AppComponent {
     ];
 
     examples = [
-        { path: '/examples/child', icon: 'face', title: 'Child Routes' }
+        { path: '/examples/child', icon: 'face', title: 'Child Routes' },
+        { path: '/examples/params', icon: 'system_update_alt', title: 'Route Params' }
     ];
 
     isAuthenticated$ = this.authService.isAuthenticated$.pipe(shareReplay(1));
