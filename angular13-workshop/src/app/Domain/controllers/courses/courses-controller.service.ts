@@ -2,22 +2,24 @@ import { Injectable } from '@angular/core';
 import { CoursesService } from 'src/app/Infraestructure/services/courses/courses.service';
 import { Course } from '../../models/course';
 import { courseMapper } from '../../mappers/CourseMapper';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CoursesControllerService {
     courses: Course[] = [];
+    courses$: any;
 
     constructor(private coursesService: CoursesService) {}
 
     getAll(): void {
-        this.coursesService
-            .all()
-            .subscribe((result: Course[]) => {
-                console.log(result)
-                this.courses = result
-            });
+        this.courses$ = this.coursesService.all();
+        // this.coursesService
+        //     .all()
+        //     .subscribe((result: Course[]) => {
+        //         this.courses = result
+        //     });
     }
 
     save(course: Course) {
