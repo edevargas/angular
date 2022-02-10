@@ -18,11 +18,18 @@
     "lint": {
       "executor": "@angular-devkit/build-angular:tslint",
       "options": {
-        "tsConfig": ["apps/nashboard-e2e/tsconfig.json"],
-        "exclude": ["**/node_modules/**", "!apps/nashboard-e2e/**/*"]
+        "tsConfig": [
+          "apps/nashboard-e2e/tsconfig.json"
+        ],
+        "exclude": [
+          "**/node_modules/**",
+          "!apps/nashboard-e2e/**/*"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["nashboard"]
+  "implicitDependencies": [
+    "nashboard"
+  ]
 }

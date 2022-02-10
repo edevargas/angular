@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/nashboard",
         "index": "apps/nashboard/src/index.html",
@@ -18,7 +20,10 @@
           "apps/nashboard/src/favicon.ico",
           "apps/nashboard/src/assets"
         ],
-        "styles": ["apps/nashboard/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/nashboard/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -86,7 +91,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/nashboard"],
+      "outputs": [
+        "coverage/apps/nashboard"
+      ],
       "options": {
         "jestConfig": "apps/nashboard/jest.config.js",
         "passWithNoTests": true

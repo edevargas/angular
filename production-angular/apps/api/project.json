@@ -5,12 +5,16 @@
   "targets": {
     "build": {
       "executor": "@nrwl/node:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/api",
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
-        "assets": ["apps/api/src/assets"]
+        "assets": [
+          "apps/api/src/assets"
+        ]
       },
       "configurations": {
         "production": {
@@ -39,12 +43,17 @@
           "apps/api/tsconfig.app.json",
           "apps/api/tsconfig.spec.json"
         ],
-        "exclude": ["**/node_modules/**", "!apps/api/**/*"]
+        "exclude": [
+          "**/node_modules/**",
+          "!apps/api/**/*"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/api"],
+      "outputs": [
+        "coverage/apps/api"
+      ],
       "options": {
         "jestConfig": "apps/api/jest.config.js",
         "passWithNoTests": true
