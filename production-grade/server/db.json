@@ -15,5 +15,22 @@
       "title": "Remote Mock Widget 03",
       "description": "Aliqua dolor sint duis dolor proident laboris dolor sint enim aliqua amet laborum."
     }
+  ],
+  "items": [
+    {
+      "id": "1",
+      "title": "Item 01",
+      "description": "Duis officia nisi officia sint."
+    },
+    {
+      "id": "2",
+      "title": "Item 02",
+      "description": "Irure quis ullamco minim tempor occaecat consectetur sit do sit aliqua cillum voluptate ut minim."
+    },
+    {
+      "id": "3",
+      "title": "Item 03",
+      "description": "Aliqua dolor sint duis dolor proident laboris dolor sint enim aliqua amet laborum."
+    }
   ]
 }
