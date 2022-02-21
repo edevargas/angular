@@ -7,12 +7,11 @@ import { CoreDataModule } from '@devangular/core-data';
 import { CoreStateModule } from '@devangular/core-state';
 import { MaterialModule } from '@devangular/material';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { WidgetsComponent } from './pages/widgets/widgets.component';
 import { RoutingModule } from './routing.module';
-import { WidgetDetailsComponent } from './widgets/widget-details/widget-details.component';
-import { WidgetsListComponent } from './widgets/widgets-list/widgets-list.component';
-import { WidgetsComponent } from './widgets/widgets.component';
-
+import { WidgetDetailsComponent } from './ui/widgets/widget-details/widget-details.component';
+import { WidgetsListComponent } from './ui/widgets/widgets-list/widgets-list.component';
 
 @NgModule({
   declarations: [
