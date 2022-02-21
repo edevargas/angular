@@ -1,0 +1,19 @@
+{
+  "widgets": [
+    {
+      "id": "1",
+      "title": "Remote Mock Widget 01",
+      "description": "Duis officia nisi officia sint."
+    },
+    {
+      "id": "2",
+      "title": "Remote Mock Widget 02",
+      "description": "Irure quis ullamco minim tempor occaecat consectetur sit do sit aliqua cillum voluptate ut minim."
+    },
+    {
+      "id": "3",
+      "title": "Remote Mock Widget 03",
+      "description": "Aliqua dolor sint duis dolor proident laboris dolor sint enim aliqua amet laborum."
+    }
+  ]
+}
