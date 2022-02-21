@@ -19,7 +19,8 @@
       "@devangular/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@devangular/core-data": ["libs/core-data/src/index.ts"],
       "@devangular/core-state": ["libs/core-state/src/index.ts"],
-      "@devangular/material": ["libs/material/src/index.ts"]
+      "@devangular/material": ["libs/material/src/index.ts"],
+      "@devangular/ui-toolbar": ["libs/ui-toolbar/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

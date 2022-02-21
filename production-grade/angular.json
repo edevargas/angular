@@ -9,6 +9,7 @@
     "core-state": "libs/core-state",
     "dashboard": "apps/dashboard",
     "dashboard-e2e": "apps/dashboard-e2e",
-    "material": "libs/material"
+    "material": "libs/material",
+    "ui-toolbar": "libs/ui-toolbar"
   }
 }
