@@ -20,6 +20,7 @@ export class WidgetsService {
   }
 
   create(widget: Widget) {
+    console.log({widget});
     return this.http.post(this.getUrl(), widget);
   }
 
@@ -32,7 +33,7 @@ export class WidgetsService {
   }
 
   private getUrl() {
-    return `${API}${this.model}`;
+    return `${API}/${this.model}`;
   }
 
   private getUrlWithId(id: string | null) {

@@ -34,7 +34,7 @@ export class ItemsService {
   }
 
   private getUrl() {
-    return `${API}${this.model}`;
+    return `${API}/${this.model}`;
   }
 
   private getUrlWithId(id: string | null) {

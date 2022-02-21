@@ -7,7 +7,7 @@ import { Widget } from '@devangular/api-interfaces';
   styleUrls: ['./widgets-list.component.scss']
 })
 export class WidgetsListComponent {
-  @Input() widgets: Widget[] = [];
+  @Input() widgets: Widget[] | null;
   @Input() readonly = false;
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { WidgetsListComponent } from './ui/widgets/widgets-list/widgets-list.com
     WidgetsListComponent,
   ],
   imports: [
+    CommonModule,
     BrowserAnimationsModule,
     BrowserModule,
     CoreDataModule,
