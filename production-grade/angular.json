@@ -3,6 +3,8 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "client": "apps/client",
+    "client-e2e": "apps/client-e2e",
     "core-data": "libs/core-data",
     "core-state": "libs/core-state",
     "dashboard": "apps/dashboard",
