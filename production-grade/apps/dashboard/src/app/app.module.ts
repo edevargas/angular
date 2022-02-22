@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreDataModule } from '@devangular/core-data';
 import { CoreStateModule } from '@devangular/core-state';
 import { MaterialModule } from '@devangular/material';
+import { UiToolbarModule } from '@devangular/ui-toolbar';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WidgetsComponent } from './pages/widgets/widgets.component';
@@ -32,6 +33,7 @@ import { WidgetsListComponent } from './ui/widgets/widgets-list/widgets-list.com
     HttpClientModule,
     MaterialModule,
     RoutingModule,
+    UiToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

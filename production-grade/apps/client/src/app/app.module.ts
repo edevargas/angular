@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreDataModule } from '@devangular/core-data';
+import { UiToolbarModule } from '@devangular/ui-toolbar';
 
 import { AppComponent } from './app.component';
 
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     CommonModule,
     CoreDataModule,
-    HttpClientModule
+    HttpClientModule,
+    UiToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
