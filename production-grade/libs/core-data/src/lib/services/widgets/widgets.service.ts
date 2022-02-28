@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Widget } from '@devangular/api-interfaces';
+import { environment } from "@env/environment";
 
-const API = "http://localhost:3000"
 @Injectable({
   providedIn: 'root',
 })
@@ -20,8 +20,7 @@ export class WidgetsService {
   }
 
   create(widget: Widget) {
-    console.log({widget});
-    return this.http.post(this.getUrl(), widget);
+    return this.http.post<any>(this.getUrl(), widget);
   }
 
   update(widget: Widget) {
@@ -33,7 +32,7 @@ export class WidgetsService {
   }
 
   private getUrl() {
-    return `${API}/${this.model}`;
+    return `${environment.apiEndpoint}/${this.model}`;
   }
 
   private getUrlWithId(id: string | null) {

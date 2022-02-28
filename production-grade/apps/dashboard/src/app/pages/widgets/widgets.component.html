@@ -6,7 +6,7 @@
     </devangular-widgets-list>
   </div>
   <div class="details-component">
-    <devangular-widget-details [widget]="selectedWidget"
+    <devangular-widget-details [widget]="selectedWidget$ | async"
       (saved)="saveWidget($event)"
       (cancelled)="resetForm()">
     </devangular-widget-details>

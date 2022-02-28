@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Widget } from '@devangular/api-interfaces';
-import { WidgetsService } from '@devangular/core-data';
+import { WidgetsFacade } from '@devangular/core-state';
 import { Observable } from 'rxjs';
 
 const emptyWidget: Widget = {
@@ -15,12 +15,11 @@ const emptyWidget: Widget = {
   styleUrls: ['./widgets.component.scss']
 })
 export class WidgetsComponent implements OnInit {
-  selectedWidget: Widget;
+  widgets$: Observable<Widget[]> = this.widgetFacade.allWidgets$;
+  selectedWidget$: Observable<Widget> = this.widgetFacade.selectedWidget$;
 
-  widgets$: Observable<Widget[]>;
-
-  constructor(private widgetService: WidgetsService) {
-    this.selectedWidget = emptyWidget
+  constructor(private widgetFacade: WidgetsFacade) {
+    this.selectWidget({...emptyWidget});
   }
 
   ngOnInit(): void {
@@ -29,19 +28,19 @@ export class WidgetsComponent implements OnInit {
 
   reset() {
     this.loadWidgets();
-    this.selectWidget(emptyWidget);
+    this.selectWidget({...emptyWidget});
   }
 
   resetForm() {
-    this.selectedWidget = emptyWidget;
+    this.selectWidget({...emptyWidget});
   }
 
   selectWidget(widget: Widget) {
-    this.selectedWidget = widget;
+    this.widgetFacade.selectWidget(widget);
   }
 
   loadWidgets() {
-    this.widgets$ = this.widgetService.all();
+    this.widgetFacade.loadWidgets();
   }
 
   saveWidget(widget: Widget) {
@@ -52,20 +51,19 @@ export class WidgetsComponent implements OnInit {
     }
   }
 
-  async createWidget(widget: Widget) {
-    await this.widgetService.create(widget);
+  createWidget(widget: Widget) {
+
     this.loadWidgets();
     this.resetForm();
   }
 
-  async updateWidget(widget: Widget) {
-    await this.widgetService.update(widget);
+  updateWidget(widget: Widget) {
     this.loadWidgets();
     this.resetForm();
   }
 
-  async deleteWidget(widget: Widget) {
-    await this.widgetService.delete(widget);
+  deleteWidget(widget: Widget) {
+    //this.widgetService.delete(widget);
     this.loadWidgets();
     this.resetForm();
   }
