@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core-state",
   "sourceRoot": "libs/core-state/src",
   "prefix": "devangular",
   "targets": {
@@ -8,7 +7,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/core-state"],
       "options": {
-        "jestConfig": "libs/core-state/jest.config.js",
+        "jestConfig": "libs/core-state/jest.config.ts",
         "passWithNoTests": true
       }
     },

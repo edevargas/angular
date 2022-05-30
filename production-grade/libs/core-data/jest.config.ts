@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'ui-toolbar',
+/* eslint-disable */
+export default {
+  displayName: 'core-data',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/libs/ui-toolbar',
+  coverageDirectory: '../../coverage/libs/core-data',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
