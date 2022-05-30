@@ -8,6 +8,7 @@ import { CoreDataModule } from '@devangular/core-data';
 import { CoreStateModule } from '@devangular/core-state';
 import { MaterialModule } from '@devangular/material';
 import { UiToolbarModule } from '@devangular/ui-toolbar';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WidgetsComponent } from './pages/widgets/widgets.component';
@@ -35,7 +36,14 @@ import { WidgetsListComponent } from './ui/widgets/widgets-list/widgets-list.com
     RoutingModule,
     UiToolbarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'apiEndpoint', useValue: environment.apiEndpoint
+    },
+    {
+      provide: 'production', useValue: environment.production
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

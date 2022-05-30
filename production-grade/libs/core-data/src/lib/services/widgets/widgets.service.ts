@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Widget } from '@devangular/api-interfaces';
-import { environment } from "@env/environment";
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +8,7 @@ import { environment } from "@env/environment";
 export class WidgetsService {
   model = 'widgets';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, @Inject('apiEndpoint') private apiEndpoint: string) {}
 
   all() {
     return this.http.get<Widget[]>(this.getUrl());
@@ -32,7 +31,7 @@ export class WidgetsService {
   }
 
   private getUrl() {
-    return `${environment.apiEndpoint}/${this.model}`;
+    return `${this.apiEndpoint}/${this.model}`;
   }
 
   private getUrlWithId(id: string | null) {
