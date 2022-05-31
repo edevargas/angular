@@ -1,7 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { WidgetsService } from './widgets.service';
-import { CreateWidgetDto } from './dto/create-widget.dto';
-import { UpdateWidgetDto } from './dto/update-widget.dto';
 import { Widget } from '@devangular/api-interfaces';
 
 @Controller('widgets')
@@ -23,7 +21,7 @@ export class WidgetsController {
     return this.widgetsService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateWidgetDto: Widget) {
     return this.widgetsService.update(id, updateWidgetDto);
   }

@@ -25,6 +25,7 @@ export class WidgetsService {
   ];
 
   create(widget: Widget) {
+    console.log("-----------CREATE");
     this.mockWidgets = [...this.mockWidgets,
       Object.assign({}, widget, { id: uuidv4() })
     ];
@@ -40,6 +41,8 @@ export class WidgetsService {
   }
 
   update(id: string, widget: Widget) {
+    console.log({widget});
+
     this.mockWidgets = this.mockWidgets.map((w: Widget) => (w.id === id ? widget : w))
     return  this.mockWidgets;
   }

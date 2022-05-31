@@ -6,12 +6,18 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromWidgets from './widgets/widgets.reducer';
 import { WidgetsEffects } from './widgets/widgets.effects';
 import { WidgetsFacade } from './widgets/widgets.facade';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 export const coreStateRoutes: Route[] = [];
 
 @NgModule({
   imports: [
     CommonModule,
+    StoreModule.forRoot(fromWidgets.reducer),
+    StoreDevtoolsModule.instrument({ maxAge: 10 }),
+    EffectsModule.forRoot([
+      WidgetsEffects
+    ]),
   ],
   providers: [WidgetsFacade],
 })

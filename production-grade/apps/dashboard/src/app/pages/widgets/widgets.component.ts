@@ -16,7 +16,7 @@ const emptyWidget: Widget = {
 })
 export class WidgetsComponent implements OnInit {
   widgets$: Observable<Widget[]> = this.widgetFacade.allWidgets$;
-  selectedWidget$: Observable<Widget> = this.widgetFacade.selectedWidget$;
+  selectedWidget$: Observable<Widget | null> = this.widgetFacade.selectedWidget$;
 
   constructor(private widgetFacade: WidgetsFacade) {
     this.selectWidget({...emptyWidget});
@@ -24,6 +24,7 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.reset();
+    this.widgetFacade.mutations$.subscribe(_ => this.reset());
   }
 
   reset() {
@@ -44,28 +45,11 @@ export class WidgetsComponent implements OnInit {
   }
 
   saveWidget(widget: Widget) {
-    if(widget.id) {
-      this.updateWidget(widget);
-    } else {
-      this.createWidget(widget);
-    }
-  }
-
-  createWidget(widget: Widget) {
-
-    this.loadWidgets();
-    this.resetForm();
-  }
-
-  updateWidget(widget: Widget) {
-    this.loadWidgets();
-    this.resetForm();
+    this.widgetFacade.saveWidget(widget);
   }
 
   deleteWidget(widget: Widget) {
-    //this.widgetService.delete(widget);
-    this.loadWidgets();
-    this.resetForm();
+    this.widgetFacade.deleteWidget(widget);
   }
 
   private getRandomID() {

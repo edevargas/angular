@@ -26,7 +26,7 @@ export const initialState: State = widgetsAdapter.getInitialState({
 
 const widgetsReducer = createReducer(
   initialState,
-  on(WidgetsActions.init, (state) => ({
+  on(WidgetsActions.init, (state): State => ({
     ...state,
     loaded: false,
     error: null,
@@ -34,7 +34,7 @@ const widgetsReducer = createReducer(
   on(WidgetsActions.loadWidgetsSuccess, (state, { widgets }) =>
     widgetsAdapter.setAll(widgets, { ...state, loaded: true })
   ),
-  on(WidgetsActions.loadWidgetsFailure, (state, { error }) => ({
+  on(WidgetsActions.loadWidgetsFailure, (state, { error }): State => ({
     ...state,
     error,
   }))
