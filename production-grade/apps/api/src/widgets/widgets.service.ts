@@ -25,11 +25,9 @@ export class WidgetsService {
   ];
 
   create(widget: Widget) {
-    console.log("-----------CREATE");
-    this.mockWidgets = [...this.mockWidgets,
-      Object.assign({}, widget, { id: uuidv4() })
-    ];
-    return  this.mockWidgets;
+    const newWidget =  Object.assign({}, widget, { id: uuidv4() });
+    this.mockWidgets = [...this.mockWidgets, newWidget ];
+    return  newWidget;
   }
 
   findAll() {
@@ -41,14 +39,12 @@ export class WidgetsService {
   }
 
   update(id: string, widget: Widget) {
-    console.log({widget});
-
     this.mockWidgets = this.mockWidgets.map((w: Widget) => (w.id === id ? widget : w))
-    return  this.mockWidgets;
+    return  widget;
   }
 
   remove(id: string) {
     this.mockWidgets = this.mockWidgets.filter((w: Widget) => (w.id !== id));
-    return  this.mockWidgets;
+    return  true;
   }
 }

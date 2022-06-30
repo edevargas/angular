@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Widget } from '@devangular/api-interfaces';
 const emptyWidget: Widget = {
-  id: null,
+  id: "",
   title: '',
   description: '',
 }
@@ -13,8 +13,10 @@ const emptyWidget: Widget = {
 export class WidgetDetailsComponent {
   currentWidget: Widget = emptyWidget;
   originalTitle = '';
-  @Input() set widget(value: Widget | null) {
+  @Input() set widget(value: Widget | undefined | null) {
     if(value){
+      console.log({value});
+
       this.originalTitle = value.title;
       this.currentWidget = {...value};
     }

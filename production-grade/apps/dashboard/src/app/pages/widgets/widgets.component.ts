@@ -4,7 +4,7 @@ import { WidgetsFacade } from '@devangular/core-state';
 import { Observable } from 'rxjs';
 
 const emptyWidget: Widget = {
-  id: null,
+  id: "",
   title: '',
   description: '',
 }
@@ -16,7 +16,7 @@ const emptyWidget: Widget = {
 })
 export class WidgetsComponent implements OnInit {
   widgets$: Observable<Widget[]> = this.widgetFacade.allWidgets$;
-  selectedWidget$: Observable<Widget | null> = this.widgetFacade.selectedWidget$;
+  selectedWidget$: Observable<Widget | undefined> = this.widgetFacade.selectedWidget$;
 
   constructor(private widgetFacade: WidgetsFacade) {
     this.selectWidget({...emptyWidget});
@@ -24,7 +24,6 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.reset();
-    this.widgetFacade.mutations$.subscribe(_ => this.reset());
   }
 
   reset() {
@@ -37,7 +36,7 @@ export class WidgetsComponent implements OnInit {
   }
 
   selectWidget(widget: Widget) {
-    this.widgetFacade.selectWidget(widget);
+    this.widgetFacade.selectWidget(widget.id);
   }
 
   loadWidgets() {

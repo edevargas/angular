@@ -5,7 +5,11 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "paths": {
+      "@devangular/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@devangular/core-data": ["libs/core-data/src/index.ts"],
+    }
   },
   "exclude": [
     "src/test-setup.ts",

@@ -1,38 +1,50 @@
+
+import { Widget } from '@devangular/api-interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { WIDGETS_FEATURE_KEY, State, widgetsAdapter } from './widgets.reducer';
+import { widgetsAdapter, WidgetsState, WIDGETS_FEATURE_KEY } from './widgets.reducer';
 
 // Lookup the 'Widgets' feature state managed by NgRx
-export const getWidgetsState =
-  createFeatureSelector<State>(WIDGETS_FEATURE_KEY);
+export const selectWidgetsState = createFeatureSelector<
+  WidgetsState
+>(WIDGETS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = widgetsAdapter.getSelectors();
 
-export const getWidgetsLoaded = createSelector(
-  getWidgetsState,
-  (state: State) => state.loaded
+export const selectWidgetsLoaded = createSelector(
+  selectWidgetsState,
+  (state: WidgetsState) => state.loaded
 );
 
-export const getWidgetsError = createSelector(
-  getWidgetsState,
-  (state: State) => state.error
+export const selectWidgetsError = createSelector(
+  selectWidgetsState,
+  (state: WidgetsState) => state.error
 );
 
-export const getAllWidgets = createSelector(getWidgetsState, (state: State) =>
-  selectAll(state)
+export const selectAllWidgets = createSelector(
+  selectWidgetsState,
+  (state: WidgetsState) => selectAll(state)
 );
 
-export const getWidgetsEntities = createSelector(
-  getWidgetsState,
-  (state: State) => selectEntities(state)
+export const selectWidgetsEntities = createSelector(
+  selectWidgetsState,
+  (state: WidgetsState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
-  getWidgetsState,
-  (state: State) => state.selectedId
+export const selectSelectedWidgetId = createSelector(
+  selectWidgetsState,
+  (state: WidgetsState) => state.selectedId
 );
 
-export const getSelected = createSelector(
-  getWidgetsEntities,
-  getSelectedId,
-  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
+const emptyWidget: Widget = {
+  id: "",
+  title: '',
+  description: '',
+};
+
+export const selectSelectedWidget = createSelector(
+  selectWidgetsEntities,
+  selectSelectedWidgetId,
+  (entities, selectedId) => {
+    return selectedId ? entities[selectedId] : emptyWidget;
+  }
 );
